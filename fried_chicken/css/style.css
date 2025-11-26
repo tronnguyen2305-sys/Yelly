@@ -1,0 +1,615 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* HEADER */
+/* Phần Header chính */
+.header {
+  background-color: #FF4500;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  overflow: hidden; 
+  height: 300px; /* BẮT BUỘC: banner cuộn phải có chiều cao cố định */
+  padding: 0;
+}
+
+/* Khung chứa tất cả slide */
+.header-banner {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  transition: transform 0.8s ease-in-out; 
+}
+
+/* Mỗi slide chiếm đúng 100% khung */
+.banner-slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+.header > *:not(.header-banner) {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Logo và slogan */
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #582400;
+  padding-left: 20px;  /* khoảng cách với lề trái */
+  min-width: 160px;
+}
+
+.logo {
+  width: 130px;
+  height: auto;
+  display: block;
+}
+
+.slogan {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 8px;
+  color: #fff4f0;
+  white-space: nowrap
+}
+
+/* Thanh tìm kiếm */
+.search-container {
+  width: 900px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 50px 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.search-icon i {
+  font-size: 20px;
+  color: #888;
+}
+
+/* Đăng nhập và icon */
+.header-right {
+  color: #582400;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  display: flex;
+  gap: 40px;
+  min-width: 270px;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+/* Link đăng nhập */
+.login {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.login:hover {
+  color: black;
+}
+
+/* Giỏ hàng và thông báo */
+.icon-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.icon-box {
+  position: relative;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.icon-box i {
+  color: white;
+}
+
+.icon-box:hover i {
+  color: black;
+}
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #d32f2f;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label-text {
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+.notify-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+
+
+/* Thanh menu dưới*/
+.main-menu {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  user-select: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  align-items: center;
+}
+
+.main-menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  padding: 16px 0;
+  margin: 0;
+}
+
+.main-menu ul li a {
+  color: orangered;
+  font-weight: 800;
+  font-size: 20px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.main-menu ul li a:hover {
+  color: black;
+ 
+}
+/* menu cuộn*/
+.carousel-container {
+  position: relative;
+  width: 100VW;
+  max-width: 90vw;
+  aspect-ratio: 16/ 9;  
+  margin: 0px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.carousel-track {
+  display: flex;
+   transition: transform 0.5s ease-in-out;
+}
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 2%;
+  object-fit: cover; 
+  display: block;
+}
+/*reponsive điện thoại*/
+@media (max-width: 768px) {
+  /* Header co lại cho gọn */
+  .header {
+    flex-direction: column;
+    padding: 10px 20px;
+    gap: 10px;
+  }
+
+  .search-container {
+    width: 90%;
+  }
+
+  .icon-wrapper {
+    gap: 20px;
+  }
+  
+  
+
+  /* Banner tự co giãn và full chiều ngang */
+  .carousel-container {
+    width: 100%;
+    height: 220px;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+.main-menu ul {
+   flex-direction: column;
+  gap: 10px; 
+  /* display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cột đều */
+    /* gap: 10px; */ 
+  align-items: center;
+
+}
+.main-menu ul li a {
+  text-align: center;      
+    justify-content: center; 
+    align-items: center;
+    display: flex;  
+}
+
+
+  
+}
+@media (min-width:769px){
+  .carousel-container{
+    height:600px
+    
+  }
+}
+/*kẻ phân cách*/
+.section-header {
+  display: flex;
+  align-items: center;
+  margin: 3px 0 5px;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222; /* màu chữ */
+  margin: 15px;
+  white-space: nowrap; /* không cho xuống dòng */
+  letter-spacing: 1px;
+}
+
+.section-header::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background-color: #e0e0e0; /* màu gạch ngang */
+  margin-left: 30px;
+  border-radius: 2px;
+}
+
+
+/* Phần Hot Search */
+/* Container bao các danh mục */
+.category-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 15px;
+    padding: 30px;
+    background: #d93025;
+    border-radius: 5px;
+    max-width: 100%;
+    margin: 20px auto;
+    flex-wrap: wrap; /* Cho mobile */
+}
+
+/* Từng ô danh mục (giống .hot-box) */
+.category-container .food-item {
+    flex: 1 1 calc(25% - 20px); /* 4 ô trên 1 hàng */
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    color: #d93025;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Hover hiệu ứng nhẹ */
+.category-container .food-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* Hình món ăn */
+.category-container .food-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: 0.3s ease;
+}
+
+/* Hover phóng nhẹ ảnh */
+.category-container .food-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Tên danh mục */
+.category-container .food-item span {
+    padding: 15px 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Responsive – màn hình nhỏ 768px */
+@media (max-width: 768px) {
+    .category-container .food-item {
+        flex: 1 1 calc(50% - 15px); /* 2 cột */
+    }
+}
+
+/* Mobile nhỏ 480px */
+@media (max-width: 480px) {
+    .category-container .food-item {
+        flex: 1 1 100%; /* 1 cột */
+    }
+}
+
+
+/* Hiệu ứng hover */
+.food-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Responsive (mobile) */
+@media (max-width: 900px) {
+  .hot-search {
+    flex-wrap: wrap;
+  }
+  .hot-box {
+    flex: 1 1 calc(50% - 15px);
+  }
+  .hot-title {
+    flex-basis: 100%;
+    height: auto;
+    padding: 20px;
+  }
+}
+ /*có thể bạn thích*/
+ .menu-container {
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: white;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.menu-card {
+  width: 260px;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.menu-info {
+  padding: 10px 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.3em;
+  min-height: 45px; /* đảm bảo tiêu đề bằng nhau */
+}
+
+.menu-info .price {
+  display: block;
+  color: #d60000; /* đỏ đậm */
+  font-weight: 900;
+  font-size: 19px;
+  text-align:right;
+  margin: 3px 0 7px;
+}
+.menu-info p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 0;
+  flex-grow: 1;
+}
+.menu-card button {
+  width: 95%;
+  margin: 10px auto 15px;
+  display: block;
+  background-color: #ef3629;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.menu-card button:hover {
+  background-color: red;
+}
+
+
+
+
+
+
+.product {
+    background: white;
+    display: inline-block;
+    width: 200px;
+    margin: 15px;
+    height: 350px;
+    /* vertical-align: top ;
+    display: flex   ;
+    flex-direction: column ;
+    justify-content: space-between; */
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+}
+
+.product img {
+    width: 100%;
+    height:200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.product h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+    white-space: nowrap;        /* không xuống dòng */
+    overflow: hidden;           /* ẩn phần tràn */
+    text-overflow: ellipsis;    /* hiển thị dấu … nếu quá dài */
+    text-align: center;
+}
+.product p {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    text-align: center;
+}
+/* FOOTER */
+
+ .footer-wrapper {
+  background-color: #d93025;
+  color: #fff;
+  padding: 20px 40px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+}
+.logo-slogan-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40px;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.logo-image {
+  width: 100px;  /* bạn chỉnh kích thước logo phù hợp */
+  height: auto;
+  margin-bottom: 6px;
+}
+
+.slogan-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap; /* cho responsive */
+}
+
+.hotline-section {
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* để biết có thể click */
+}
+
+
+
+.hotline-text {
+  margin: 0;
+  font-size: 16px;
+}
+
+.hotline-number {
+  font-size: 42px;
+  margin: 0;
+  user-select: none; /* không cho chọn văn bản trực tiếp */
+}
+
+.footer-links-section {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-link-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
